@@ -35,3 +35,15 @@ require __DIR__ . '/controller.php';
 
 // Start the plugin.
 \LWWooCommerceThankYouRedir\LWWooCommerceThankYouRedir::start();
+
+/**
+ * Declare HPOS compatibility.
+ *
+ * @since 2024.09.04
+ * @see https://developer.woocommerce.com/docs/hpos-extension-recipe-book/#2-supporting-high-performance-order-storage-in-your-extension
+ */
+add_action( 'before_woocommerce_init', static function(): void {
+    if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__ );
+    }
+} );

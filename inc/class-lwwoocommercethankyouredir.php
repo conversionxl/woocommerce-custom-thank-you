@@ -45,7 +45,7 @@ class LWWooCommerceThankYouRedir {
 		add_action( 'wp_ajax_wc-thank-you-hint', array( $this, 'hint_thank_you_pages' ) );
 
 		// Custom thank you page handling after checkout.
-		add_action( 'woocommerce_thankyou', array( $this, 'redirect_thank_you_page' ) );
+		add_action( 'woocommerce_thankyou', array( $this, 'redirect_thank_you_page' ), 99 );
 		add_filter( 'woocommerce_general_settings', array( $this, 'custom_thank_you_page' ) );
 	}
 
